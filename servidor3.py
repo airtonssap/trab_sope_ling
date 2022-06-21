@@ -1,5 +1,4 @@
 import socket
-import struct
 
 lista = []
 n = input("Número 'n' de parcelas da série a ser calculadas: ")
@@ -35,10 +34,7 @@ if p == '1':
     for i in range(int(n)+1):
         parcela = con.recv(7)
         print('parcela: ', parcela.decode())
-        print(parcela,'\n')
-        #valor = parcela.decode()
         valor = float(parcela.decode())
-#        valor = parcela.decode('utf-8')
         lista.append(valor)
         print(lista, '\n')   
     print(f'O valor do cálculo de cada cliente é: {round(sum(lista), 4)}')
@@ -48,20 +44,10 @@ if p == '1':
 if p == '2':
     for i in range(int(c)):
         parcela = con.recv(7)
-        print('parcela: ', parcela.decode())
+        print('parcela total de cada cliente: ', parcela.decode())
         valor = float(parcela.decode())
-#        valor = parcela.decode('utf-8')
         lista.append(valor)
         print(lista, '\n')   
     print(f'O valor da soma de cada cliente é: {round(sum(lista), 4)}')
     print('Fechando a conexão')
     con.close()
-    
-#while True:
-#    msg = input('digite: ')
-#    if msg == 'fim'.upper():
-#        con.close()
-#        break
-#    con.sendall(str.encode(msg))
-#    msg = con.recv(1024)
-#    print(msg.decode())
